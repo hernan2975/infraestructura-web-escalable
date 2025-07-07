@@ -50,3 +50,19 @@ infraestructura-web-escalable/
 | `.gitignore`                                 | Exclusiones para versiones y entorno local                |
 | `LICENSE`                                    | Licencia del repositorio (MIT)                            |
 | `README.md`                                  | Documentación principal con badges y tabla de contenidos  |
+
+📁 Carpetas y Archivos Complementarios
+
+| Ruta                                       | Descripción                                                              |
+|--------------------------------------------|--------------------------------------------------------------------------|
+| `env/`                                     | Archivos `.env.example` centralizados para cada entorno (dev, prod)      |
+| `docs/guías/instalacion_local.md`          | Guía paso a paso para levantar el proyecto en entorno local              |
+| `docs/guías/despliegue_produccion.md`      | Guía para desplegar en entorno productivo o servidor cloud               |
+| `docs/guías/arquitectura.md`              | Explicación detallada del diseño del sistema                             |
+| `docs/assets/`                             | Imágenes adicionales como esquemas, logos, iconos                        |
+| `.env.example`                             | Variables de entorno base para docker/CI (se copia en `.env`)            |
+| `.editorconfig`                            | Reglas de formato de código unificado entre editores                     |
+| `CONTRIBUTING.md`                          | Guía para colaboradores: estilo, ramas, buenas prácticas                 |
+| `ISSUE_TEMPLATE.md`                        | Plantilla para issues bien formulados con pasos, entorno, etc.           |
+| `PULL_REQUEST_TEMPLATE.md`                 | Estructura para facilitar revisión de PRs (qué, por qué, cómo probarlo)  |
+| `PROJECTS.md`                              | Planificación general, hitos, objetivos y enlaces a issues clave         |
