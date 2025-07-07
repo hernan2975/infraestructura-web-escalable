@@ -1,0 +1,9 @@
+[ Usuarios ]
+     |
+[ NGINX LB ] 
+     |         ↘︎
+[ APP 1 ]   [ APP 2 ]  
+     |          |
+[ PostgreSQL Master ] → [ PostgreSQL Replica ]
+     |
+[ Prometheus + Grafana ]
