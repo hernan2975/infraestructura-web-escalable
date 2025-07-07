@@ -1,13 +1,23 @@
-name: CI/CD Pipeline
+name: Deploy infraestructura
+
 on:
   push:
-    branches: [ main ]
+    branches: [main]
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - name: Set up Docker
-        uses: docker/setup-buildx-action@v2
-      - name: Deploy App
-        run: docker-compose -f docker/docker-compose.yml up -d --build
+      - name: Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: Configurar SSH para despliegue
+        uses: webfactory/ssh-agent@v0.8.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_KEY }}
+
+      - name: Ejecutar ansible-playbook
+        run: |
+          sudo apt update && sudo apt install ansible -y
+          ansible-playbook ansible/playbooks/deploy_app.yml -i ansible/inventory/hosts.ini
