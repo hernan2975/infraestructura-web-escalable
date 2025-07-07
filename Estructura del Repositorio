@@ -1,0 +1,24 @@
+infraestructura-web-escalable/
+├── ansible/                    # Playbooks de automatización
+│   ├── inventory/
+│   └── playbooks/
+├── docker/                     # Contenedores y docker-compose.yml
+│   └── docker-compose.yml
+├── nginx/                      # Configuración de balanceadores
+│   └── load-balancer.conf
+├── postgres/                   # Maestro y réplica + scripts de backup
+│   ├── master/
+│   └── replica/
+├── scripts/                    # Scripts auxiliares en Bash
+│   └── backups/
+├── monitoring/                 # Configuración de Prometheus y Grafana
+│   └── grafana/
+│   └── prometheus/
+├── ci-cd/                      # Workflow de GitHub Actions
+│   └── github-actions/
+├── docs/                       # Documentación e imágenes
+│   ├── arquitectura.png
+│   └── README.md
+├── .gitignore
+├── LICENSE
+└── README.md
