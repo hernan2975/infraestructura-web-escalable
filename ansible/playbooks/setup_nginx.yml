@@ -1,0 +1,16 @@
+- name: Instalar y configurar NGINX
+  hosts: balanceadores
+  become: yes
+  tasks:
+    - name: Instalar NGINX
+      apt:
+        name: nginx
+        state: present
+    - name: Copiar configuración de balanceo
+      copy:
+        src: ../../nginx/load-balancer.conf
+        dest: /etc/nginx/sites-available/default
+    - name: Reiniciar NGINX
+      service:
+        name: nginx
+        state: restarted
