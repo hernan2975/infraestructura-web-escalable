@@ -1,0 +1,18 @@
+- name: Desplegar aplicación en contenedor
+  hosts: app_servers
+  become: yes
+  tasks:
+    - name: Instalar Docker
+      apt:
+        name: docker.io
+        state: present
+        update_cache: yes
+
+    - name: Copiar docker-compose.yml
+      copy:
+        src: ../../docker/docker-compose.yml
+        dest: /opt/webapp/docker-compose.yml
+
+    - name: Ejecutar stack
+      shell: |
+        docker compose -f /opt/webapp/docker-compose.yml up -d
