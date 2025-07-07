@@ -1,0 +1,25 @@
+- name: Configurar PostgreSQL en master y réplica
+  hosts: db_master:db_replica
+  become: yes
+  tasks:
+    - name: Instalar PostgreSQL
+      apt:
+        name: postgresql
+        state: present
+        update_cache: yes
+
+    - name: Habilitar acceso externo
+      lineinfile:
+        path: /etc/postgresql/15/main/postgresql.conf
+        regexp: '^#?listen_addresses'
+        line: "listen_addresses = '*'"
+
+    - name: Copiar pg_hba.conf
+      copy:
+        src: ../../postgres/common/pg_hba.conf
+        dest: /etc/postgresql/15/main/pg_hba.conf
+
+    - name: Reiniciar servicio
+      service:
+        name: postgresql
+        state: restarted
