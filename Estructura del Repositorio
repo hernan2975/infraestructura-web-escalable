@@ -1,24 +1,33 @@
 infraestructura-web-escalable/
-├── ansible/                    # Playbooks de automatización
+├── ansible/
 │   ├── inventory/
+│   │   └── hosts.ini
 │   └── playbooks/
-├── docker/                     # Contenedores y docker-compose.yml
+│       ├── setup_nginx.yml
+│       ├── setup_postgresql.yml
+│       ├── deploy_app.yml
+├── docker/
 │   └── docker-compose.yml
-├── nginx/                      # Configuración de balanceadores
+├── nginx/
 │   └── load-balancer.conf
-├── postgres/                   # Maestro y réplica + scripts de backup
+├── postgres/
 │   ├── master/
+│   │   └── postgresql.conf
 │   └── replica/
-├── scripts/                    # Scripts auxiliares en Bash
+│       └── recovery.conf
+├── scripts/
 │   └── backups/
-├── monitoring/                 # Configuración de Prometheus y Grafana
+│       └── backup_postgres.sh
+├── monitoring/
+│   ├── prometheus/
+│   │   └── prometheus.yml
 │   └── grafana/
-│   └── prometheus/
-├── ci-cd/                      # Workflow de GitHub Actions
+│       └── dashboards/
+├── ci-cd/
 │   └── github-actions/
-├── docs/                       # Documentación e imágenes
-│   ├── arquitectura.png
-│   └── README.md
+│       └── deploy.yml
+├── docs/
+│   └── arquitectura.png
 ├── .gitignore
 ├── LICENSE
 └── README.md
