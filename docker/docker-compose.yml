@@ -1,21 +1,45 @@
-version: '3.8'
+version: '3.9'
+
 services:
-  web:
-    image: nginx
+  nginx:
+    image: nginx:latest
+    container_name: nginx_lb
     ports:
       - "80:80"
     volumes:
-      - ../nginx/load-balancer.conf:/etc/nginx/nginx.conf
-  postgres-master:
-    image: postgres:15
+      - ../nginx/load-balancer.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - app1
+      - app2
+
+  app1:
+    image: tu_app_image
+    container_name: app1
     environment:
+      - APP_ENV=production
+
+  app2:
+    image: tu_app_image
+    container_name: app2
+    environment:
+      - APP_ENV=production
+
+  postgres_master:
+    image: postgres:15
+    container_name: pg_master
+    environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: masterpass
     volumes:
-      - ../postgres/master/:/var/lib/postgresql/data
-  postgres-replica:
+      - ../postgres/master:/var/lib/postgresql/data
+
+  postgres_replica:
     image: postgres:15
+    container_name: pg_replica
     environment:
+      POSTGRES_USER: postgres
       POSTGRES_PASSWORD: replicapass
     volumes:
-      - ../postgres/replica/:/var/lib/postgresql/data
-
+      - ../postgres/replica:/var/lib/postgresql/data
+    depends_on:
+      - postgres_master
