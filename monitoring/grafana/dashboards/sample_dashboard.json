@@ -1,0 +1,16 @@
+
+{
+  "dashboard": {
+    "id": null,
+    "title": "Infraestructura Escalable",
+    "panels": [
+      {
+        "type": "graph",
+        "title": "Uso de CPU",
+        "targets": [{ "expr": "node_cpu_seconds_total", "refId": "A" }]
+      }
+    ],
+    "schemaVersion": 30
+  },
+  "overwrite": true
+}
