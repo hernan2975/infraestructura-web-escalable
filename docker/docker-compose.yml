@@ -1,0 +1,21 @@
+version: '3.8'
+services:
+  web:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ../nginx/load-balancer.conf:/etc/nginx/nginx.conf
+  postgres-master:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: masterpass
+    volumes:
+      - ../postgres/master/:/var/lib/postgresql/data
+  postgres-replica:
+    image: postgres:15
+    environment:
+      POSTGRES_PASSWORD: replicapass
+    volumes:
+      - ../postgres/replica/:/var/lib/postgresql/data
+
