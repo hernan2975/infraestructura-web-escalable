@@ -1,0 +1,22 @@
+# Logs
+*.log
+logs/
+*.out
+
+# Docker
+*.env
+docker-compose.override.yml
+
+# Ansible
+*.retry
+
+# Vagrant/virtualbox
+.vagrant/
+*.box
+
+# General
+__pycache__/
+*.pyc
+.DS_Store
+.idea/
+.vscode/
